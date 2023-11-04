@@ -1,0 +1,24 @@
+{
+  "Parameters" : {
+    "BucketName" : {
+      "Type" : "String",
+      "Description" : "The name of the bucket."
+    }
+  },
+  "Resources": {
+      "s3Bucket": {
+          "Type": "AWS::S3::Bucket",
+          "Properties" : {
+            "BucketName" : {"Ref" : "BucketName"},
+            "PublicAccessBlockConfiguration" : {
+              "BlockPublicAcls" : "True",
+              "IgnorePublicAcls" : "True"
+            },
+            "Tags" : {
+              "Key" : "Region",
+              "Value" : {"Ref" : "AWS::Region"}
+            }
+          }
+      }
+  }
+}
