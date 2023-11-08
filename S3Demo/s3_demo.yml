@@ -3,10 +3,10 @@ Description: Stands up a s3 bucket
 Parameters:
   BucketName:
     Type: String
-    Description: The name of the bucket
+    Description: The name of the bucket.
   Region:
     Type: String
-    Description: The name of the region
+    Description: The name of the region.
   AllowedIpAddressSource:
     Type: String
     Description: The source IP address that will be allowed for this bucket.
@@ -40,3 +40,9 @@ Resources:
               IpAddress: 
                 "aws:SourceIp": !Sub ${AllowedIpAddressSource}
             Principal: "*"
+  ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-089c26792dcb1fbd4
+      InstanceInitiatedShutdownBehavior: terminate
+      InstanceType: t2.micro
